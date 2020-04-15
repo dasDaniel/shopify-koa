@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>App home</title>
+
+  <script src="https://unpkg.com/@shopify/app-bridge"></script>
+  <script>
+    var AppBridge = window['app-bridge'];
+    var createApp = AppBridge.default;
+    var Toast = AppBridge.actions.Toast;
+    var app = createApp({
+      apiKey: "<%- apiKey %>",
+      shopOrigin: "<%- shopOrigin %>",
+      debug: true
+    });
+    Toast
+      .create(app, {
+        message: 'Auth 👍',
+        duration: 1500,
+      })
+      .dispatch(Toast.Action.SHOW);
+  </script>
+</head>
+
+<body>
+
+  <div>
+    <h1>APP HOME</h1>
+    <a href="/home?shop=<%- shopOrigin %>">HOME</a>
+    <a href="/about?shop=<%- shopOrigin %>">ABOUT</a>
+  </div>
+</body>
+
+</html>
